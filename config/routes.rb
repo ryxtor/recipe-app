@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   end
 
   resources :recipes, only: [:index, :new, :create, :destroy, :show]
+  resources :inventories, only: [:index, :new, :create, :destroy, :show]
 end
