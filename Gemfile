@@ -6,6 +6,9 @@ ruby '3.1.2'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.3'
 
+# Can Can Can
+gem 'cancancan'
+
 # Devise
 gem 'devise'
 
