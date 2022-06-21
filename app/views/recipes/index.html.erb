@@ -8,16 +8,24 @@
 <body>
     <section class="users_list">
     <h1>Recipes List</h1>
-   
-    <% @recipes.each do |recipe| %>
-    <div class="users">
-         <div class="info">
-           <p class="user_name"> <%= recipe.name %> </p>
-           <p class="user_name"> <%= recipe.description %> </p>
-         </div>
-         </a>
-     </div>
+
+    <div>
+    <%= link_to 'Create a Recipe', new_recipe_path %> 
+    </div
+
+    <% flash.each do |type, msg| %>
+        <%= content_tag :div, msg, class: "#{type} alert" %>
+        <% end %>
+        <% @recipes.each do |recipe| %>
+          <div>
+            <%= link_to recipe.name, recipe %> <br><br>
+            <%= recipe.description %> <br><br>
+            <% if can? :manage, recipe %>
+            <%= button_to 'Remove', recipe_path(recipe), method: :delete %> <br><br>
+            <% end %>
+          </div>
      <% end %>
+
      </section>
 </body>
 </html>
