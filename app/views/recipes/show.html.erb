@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recipes</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>  
+</head>
+<body>
+
+<section class="container">
+
+ <div class="recipe_detail">
+    <h1>Recipe 1</h1>
+
+    <p>The cooking time goes here</p>
+
+    <p>Step to cook it goes here</p>
+
+    <button type="button">Genarate shopping list!</button>
+
+    <button type="button">Add Ingridients!</button>
+
+    <table style="width:100%">
+  <tr>
+    <th>Food</th>
+    <th>Quantity</th>
+    <th>Value</th>
+    <th>Action</th>
+  </tr>
+  <tr>
+    <td>Apple</td>
+    <td>20g</td>
+     <td>10$</td>
+     <td><a>Remove</a>||<a>Add</a></td>
+   </tr>
+  <tr>
+    <td>Pineapple</td>
+    <td>10g</td>
+    <td>100$</td>
+    <td><a>Remove</a>||<a>Add</a></td>
+  </tr>
+   <tr>
+  	<td>Chicken breast</td>
+    <td>2g</td>
+    <td>4$</td>
+    <td><a>Remove</a>||<a>Add</a></td>
+  </tr>
+</table>
+
+
+   
+ </div>
+ </section>
+</body>
+</html>
