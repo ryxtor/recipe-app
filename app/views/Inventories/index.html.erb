@@ -1,0 +1,6 @@
+<% @inventories.each do |inventory| %>
+  <div>
+    <%= inventory.name %>
+    <%= button_to 'Delete', inventory_path(inventory), method: :delete %>
+  </div>
+<% end %>
