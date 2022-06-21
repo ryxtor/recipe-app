@@ -3,4 +3,5 @@ class Inventory < ActiveRecord::Base
   has_many :inventory_foods, foreign_key: :inventory_id, class_name: 'InventoryFood'
 
   validates :name, presence: true
+  validates :description, presence: true
 end

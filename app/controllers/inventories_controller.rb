@@ -7,9 +7,11 @@ class InventoriesController < ApplicationController
   def create
     @inventory = current_user.inventories.new(inventory_params)
     if @inventory.save
+      flash[:success] = 'Inventory created!'
       redirect_to inventories_path
     else
-      render 'new'
+      flash[:error] = 'Inventory not created!'
+      redirect_to new_inventory_path
     end
   end
 

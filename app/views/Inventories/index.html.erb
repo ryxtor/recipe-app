@@ -1,3 +1,6 @@
+<% flash.each do |type, msg| %>
+<%= content_tag :div, msg, class: "#{type} alert" %>
+<% end %>
 <% @inventories.each do |inventory| %>
   <div>
     <%= link_to inventory.name, inventory %>
