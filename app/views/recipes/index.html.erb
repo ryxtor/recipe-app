@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recipes</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>  
+</head>
+<body>
+    <section class="users_list">
+    <h1>Recipes List</h1>
+   
+    <% @recipes.each do |recipe| %>
+    <div class="users">
+         <div class="info">
+           <p class="user_name"> <%= recipe.name %> </p>
+           <p class="user_name"> <%= recipe.description %> </p>
+         </div>
+         </a>
+     </div>
+     <% end %>
+     </section>
+</body>
+</html>
