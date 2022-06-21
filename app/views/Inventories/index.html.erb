@@ -2,6 +2,8 @@
   <div>
     <%= inventory.name %>
     <%= inventory.description %>
-    <%= button_to 'Delete', inventory_path(inventory), method: :delete %>
+    <% if can? :manage, inventory %>
+    <%= button_to 'Remove', inventory_path(inventory), method: :delete %>
+    <% end %>
   </div>
 <% end %>
