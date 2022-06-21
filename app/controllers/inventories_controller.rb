@@ -13,6 +13,10 @@ class InventoriesController < ApplicationController
     end
   end
 
+  def show
+    @inventory = current_user.inventories.find(params[:id])
+  end
+
   def destroy
     @inventory = current_user.inventories.find(params[:id])
     @inventory.destroy
