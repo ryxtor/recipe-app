@@ -10,10 +10,6 @@ class FoodsController < ApplicationController
     redirect_to foods_path, notice: 'Food successfully deleted'
   end
 
-  def new
-    @food = Food.new
-  end
-
   def create
     @food = current_user.foods.new(food_params)
 
