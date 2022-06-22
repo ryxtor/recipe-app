@@ -2,5 +2,5 @@
 <p><%= recipe.description %></p>
 <% if can? :manage, recipe %>
   <%= button_to 'Remove', recipe_path(recipe), method: :delete %>
-  <br><br>
 <% end %>
+  <br><br>
