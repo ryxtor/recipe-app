@@ -7,6 +7,7 @@ class Ability
     can :read, :all
     can :manage, Recipe, user_id: user.id
     can :manage, Inventory, user_id: user.id
+    can :manage, RecipeFood
 
     return unless user.role.eql? 'admin'
 
