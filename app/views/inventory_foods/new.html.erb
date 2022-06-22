@@ -1,0 +1,9 @@
+<% flash.each do |type, msg| %>
+<%= content_tag :div, msg, class: "#{type} alert" %>
+<% end %>
+<%= form_with url: "/inventories/#{@inventory.id}/inventory_foods", scope: :inventory_food do |f| %>
+      <%= f.collection_select(:food_id, Food.where.not(id: @inventory.food_ids ), :id, :name ) %>
+      <%= f.number_field :quantity, placeholder: 'Quantity' %>
+      <%= f.hidden_field :inventory_id, value: @inventory.id %>
+      <%= f.submit "Submit" %>
+    <% end %>
