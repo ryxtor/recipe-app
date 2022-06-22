@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     get '/sign_out', to: 'devise/sessions#destroy'
   end
 
-  resources :recipes, only: [:index, :new, :create, :destroy, :show]
+  resources :recipes, only: [:index, :new, :create, :destroy, :show] do
+    resources :recipe_foods, only: [:create, :destroy, :new, :edit, :update]
+  end
   resources :inventories, only: [:index, :new, :create, :destroy, :show]
 end
