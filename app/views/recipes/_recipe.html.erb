@@ -1,0 +1,6 @@
+<p><%= link_to recipe.name, recipe_path(id: recipe.id) %></p>
+<p><%= recipe.description %></p>
+<% if can? :manage, recipe %>
+  <%= button_to 'Remove', recipe_path(recipe), method: :delete %>
+<% end %>
+  <br><br>
