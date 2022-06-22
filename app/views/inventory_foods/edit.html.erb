@@ -1,0 +1,11 @@
+<% flash.each do |type, msg| %>
+<%= content_tag :div, msg, class: "#{type} alert" %>
+<% end %>
+
+<p>Edit the <%= @inventory_food.food.name %> quantity:</p>
+<%= form_with url: "/inventories/#{@inventory_food.inventory_id}/inventory_foods/#{@inventory_food.id}", scope: :inventory_food, method: :put do |f| %>
+      <%= f.hidden_field :food_id, value: @inventory_food.food_id %>
+      <%= f.number_field :quantity, placeholder: 'Quantity' %>
+      <%= f.hidden_field :inventory_id, value: @inventory_food.inventory_id %>
+      <%= f.submit "Change" %>
+    <% end %>

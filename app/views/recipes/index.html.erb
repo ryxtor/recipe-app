@@ -11,7 +11,7 @@
 
     <div>
     <%= link_to 'Create a Recipe', new_recipe_path %> 
-    </div
+    </div>
 
     <% flash.each do |type, msg| %>
         <%= content_tag :div, msg, class: "#{type} alert" %>
