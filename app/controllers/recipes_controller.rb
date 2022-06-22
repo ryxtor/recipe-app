@@ -10,7 +10,7 @@ class RecipesController < ApplicationController
       flash[:success] = 'Your recipe has been created!'
       redirect_to recipes_path
     else
-      flash[:error] = 'Inventory not created!'
+      flash[:error] = 'Recipe not created!'
       redirect_to new_recipe_path
     end
   end
