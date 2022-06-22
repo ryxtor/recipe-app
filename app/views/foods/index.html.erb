@@ -1,0 +1,22 @@
+<h1>Here's a list of all the foods:</h1>
+<%= form_with model: Food.new, url: foods_path do |form|%>
+    <p>Add a new one!</p>
+
+    <%= form.label :Name%>
+    <%= form.text_field :name%>
+
+    <br>
+
+    <%= form.label :Measurement_unit%>
+    <%= form.text_field :measurement_unit%>
+    
+    <br>
+
+    <%= form.label :Price_per_unit%>
+    <%= form.text_field :price%>
+    
+    <br>
+    <%= form.submit%>
+<% end %>
+
+<%= render partial: 'food', collection: @foods%>
