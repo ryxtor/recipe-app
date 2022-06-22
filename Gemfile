@@ -6,9 +6,6 @@ ruby '3.1.2'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.3'
 
-# Can Can Can
-gem 'cancancan'
-
 # Devise
 gem 'devise'
 
@@ -48,6 +45,8 @@ gem 'tzinfo-data'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 
+# can can can
+gem 'cancancan'
 # Use Sass to process CSS
 # gem "sassc-rails"
 

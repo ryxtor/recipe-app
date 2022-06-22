@@ -7,5 +7,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/sign_out', to: 'devise/sessions#destroy'
   end
-    resources :inventories, only: [:index, :new, :create, :destroy, :show]
+
+  resources :recipes, only: [:index, :new, :create, :destroy, :show]
+  resources :inventories, only: [:index, :new, :create, :destroy, :show]
 end
