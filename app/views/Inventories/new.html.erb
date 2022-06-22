@@ -1,8 +1,0 @@
-<% flash.each do |type, msg| %>
-<%= content_tag :div, msg, class: "#{type} alert" %>
-<% end %>
-<%= form_with url: "/inventories", scope: :inventory do |f| %>
-      <%= f.text_field :name, placeholder: 'Name' %>
-      <%= f.text_field :description, placeholder: 'Description' %>
-      <%= f.submit "Submit" %>
-    <% end %>
