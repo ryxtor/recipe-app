@@ -2,8 +2,10 @@
 <p>Preparation Time: <%= @recipe.preparation_time %></p>
 <p>Cooking Time: <%= @recipe.cooking_time %></p>
 <p><%= @recipe.description %></p>
-<%= link_to "Add Food", new_recipe_recipe_food_path(@recipe) %>
 
+<%= link_to "Add Ingridient", new_recipe_recipe_food_path(@recipe) %>
+
+<button class="btn-generate" type="button">Generate shopping List</button>
 
 <% if @recipe.public %>
   <%= button_to "Private", toggle_public_path(@recipe.id), method: :patch  %>
@@ -38,7 +40,15 @@
         <% end %>
       </tr>
       <% end %>
-      
+
+      <%= content_tag :div, class: "modal fade", id: dom_id(@recipe, :modal) do %>
+        <div class="modal-dialog" >
+          <div class="modal-content">
+            Lorem ipsum...
+          </div>
+        </div>
+      <% end %>
+
     </tbody>
   </table>
 </div>
