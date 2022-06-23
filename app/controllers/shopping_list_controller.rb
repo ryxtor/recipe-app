@@ -1,3 +1,6 @@
 class ShoppingListController < ApplicationController
-  def index; end
+  def index
+    inventory = Inventory.first
+    @food = InventoryFood.where(inventory_id: inventory.id)
+  end
 end
