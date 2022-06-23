@@ -1,6 +1,6 @@
 <h1>Shopping list</h1>
 <span><p>Amount of food to buy: <%= @foods.count %> items</p> <p>Recipe: </p></span>
-<span><p>Total value of food needed: <%#sum of values%></p> <p>Inventory: <%= link_to @inventory.name, inventory_path(@inventory.id)%></p></span>
+<span><p>Total value of food needed: <%= @prices %></p> <p>Inventory: <%= link_to @inventory.name, inventory_path(@inventory.id)%></p></span>
 
 <div>
   <%= render partial: 'ingredient', collection: @foods, :as => :food %>
