@@ -2,9 +2,10 @@
 <p>Preparation Time: <%= @recipe.preparation_time %></p>
 <p>Cooking Time: <%= @recipe.cooking_time %></p>
 <p><%= @recipe.description %></p>
-<%= link_to "Add Food", new_recipe_recipe_food_path(@recipe) %>
 
+<%= link_to "Add Ingredient", new_recipe_recipe_food_path(@recipe) %>
 
+<button id="myBtn">Generate Shopping List</button>
 <% if @recipe.public %>
   <%= button_to "Private", toggle_public_path(@recipe.id), method: :patch  %>
 <% else %>
@@ -38,7 +39,30 @@
         <% end %>
       </tr>
       <% end %>
-      
+
+      <%= content_tag :div, class: "modal fade", id: dom_id(@recipe, :modal) do %>
+        <div class="modal-dialog" >
+          <div class="modal-content">
+            Lorem ipsum...
+          </div>
+        </div>
+      <% end %>
+
     </tbody>
   </table>
 </div>
+
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Generate Shopping List<h3>
+    <p>Choose an inventory to use</p>
+    <%= form_with url: "/shopping_list", scope: :inventory_food, method: :get do |f| %>
+      <%= f.collection_select(:id, current_user.inventories, :id, :name ) %>
+      <%= f.hidden_field :recipe_id, value: @recipe.id %>
+      <%= f.submit "Generate" %>
+    <% end %>
+  </div>
+</div>
+
+<%= javascript_include_tag 'modal.js' %>
