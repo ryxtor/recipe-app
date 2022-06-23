@@ -1,5 +1,5 @@
 class RecipeFoodsController < ApplicationController
-load_and_authorize_resource
+  load_and_authorize_resource
   def create
     @recipe_food = RecipeFood.new(recipe_food_params)
     @recipe_food.save
