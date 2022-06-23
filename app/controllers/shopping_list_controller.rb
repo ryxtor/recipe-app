@@ -14,9 +14,6 @@ class ShoppingListController < ApplicationController
     i_foods = InventoryFood.where(inventory_id: @inventory.id).includes([:food])
     r_foods = RecipeFood.where(recipe_id: @recipe.id).includes([:food])
 
-    p r_foods
-    p i_foods
-
     r_foods.each do |r_food|
       i_foods.each do |i_food|
         if r_food.food.id == i_food.food.id
