@@ -26,6 +26,8 @@ class ShoppingListController < ApplicationController
             newfood.quantity = quantity
             @foods.push(newfood)
             @prices += (quantity * i_food.food.price)
+          elsif r_food.quantity <= i_food.quantity
+            break
           else
             @foods.push(r_food)
             @prices += (r_food.quantity * i_food.food.price)
