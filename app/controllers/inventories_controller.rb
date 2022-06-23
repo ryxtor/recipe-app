@@ -1,5 +1,4 @@
 class InventoriesController < ApplicationController
-  load_and_authorize_resource
   def index
     @inventories = current_user.inventories.all
   end
@@ -14,6 +13,8 @@ class InventoriesController < ApplicationController
       redirect_to new_inventory_path
     end
   end
+
+  def new; end
 
   def show
     @inventory = current_user.inventories.find(params[:id])
