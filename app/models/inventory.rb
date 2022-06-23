@@ -4,4 +4,8 @@ class Inventory < ActiveRecord::Base
 
   validates :name, presence: true
   validates :description, presence: true
+
+  def food_ids
+    inventory_foods.map(&:food_id)
+  end
 end
