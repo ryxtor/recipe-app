@@ -12,4 +12,6 @@ Rails.application.routes.draw do
     resources :recipe_foods, only: [:create, :destroy, :new, :edit, :update]
   end
   resources :inventories, only: [:index, :new, :create, :destroy, :show]
+
+  match 'recipes/:recipe_id' => 'recipes#toggle_public', as: :toggle_public, via: :patch
 end
