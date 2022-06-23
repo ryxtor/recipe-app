@@ -5,10 +5,9 @@
 
 
 
-<%= link_to "Add Ingridient", new_recipe_recipe_food_path(@recipe) %>
+<%= link_to "Add Ingredient", new_recipe_recipe_food_path(@recipe) %>
 
-<button class="btn-generate" type="button">Generate shopping List</button>
-
+<button id="myBtn">Generate Shopping List</button>
 <% if @recipe.public %>
   <%= button_to "Private", toggle_public_path(@recipe.id), method: :patch  %>
 <% else %>
@@ -54,16 +53,20 @@
     </tbody>
   </table>
 </div>
-<!-- Trigger/Open The Modal -->
-<button id="myBtn">Open Modal</button>
 
-<!-- The Modal -->
+
+
+
 <div id="myModal" class="modal">
-
-  <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
-    <p>Some text in the Modal..</p>
+    <h3>Generate Shopping List<h3>
+    <p>Choose an inventory to use</p>
+    <%= form_with url: "/shopping_list", scope: :inventory_food, method: :get do |f| %>
+      <%= f.collection_select(:id, current_user.inventories, :id, :name ) %>
+      <%= f.hidden_field :recipe_id, value: @recipe.id %>
+      <%= f.submit "Generate" %>
+    <% end %>
   </div>
 
 </div>
