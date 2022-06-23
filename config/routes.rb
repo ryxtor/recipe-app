@@ -6,9 +6,14 @@ Rails.application.routes.draw do
     get '/sign_out', to: 'devise/sessions#destroy'
   end
 
-
   resources :food, only: [:index, :destroy, :create]
-  resources :recipes, only: [:index, :new, :create, :destroy, :show]
+
+  resources :recipes, only: [:index, :new, :create, :destroy, :show] do
+    resources :recipe_foods, only: [:create, :destroy, :new, :edit, :update]
+  end
+
+  match 'recipes/:recipe_id' => 'recipes#toggle_public', as: :toggle_public, via: :patch
+
   resources :inventories, only: [:index, :new, :create, :destroy, :show] do
     resources :inventory_foods, only: [:create, :destroy, :new, :edit, :update]
   end
