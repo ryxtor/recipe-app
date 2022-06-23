@@ -18,7 +18,7 @@
       <tr>
         <th >Food</th>
         <th>Quantity</th>
-        <th>Value</th>
+        <th>Value per unit</th>
         <% if can? :manage, @recipe %>
         <th>Actions</th>
         <% end %>
@@ -29,7 +29,7 @@
     <% @recipe.recipe_foods.includes([:food]).each do |food| %>
       <tr>
         <td><%= food.food.name %></td>
-        <td><%= "#{food.quantity}" %></td>
+        <td><%= "#{food.quantity} #{food.food.measurement_unit}" %></td>
         <td><%= "#{food.food.price}" %></td>
         <% if can? :manage, @recipe %>
         <td>
@@ -39,15 +39,6 @@
         <% end %>
       </tr>
       <% end %>
-
-      <%= content_tag :div, class: "modal fade", id: dom_id(@recipe, :modal) do %>
-        <div class="modal-dialog" >
-          <div class="modal-content">
-            Lorem ipsum...
-          </div>
-        </div>
-      <% end %>
-
     </tbody>
   </table>
 </div>
