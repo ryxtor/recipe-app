@@ -19,6 +19,13 @@ class RecipesController < ApplicationController
     @recipe = current_user.recipes.find(params[:id])
   end
 
+  def toggle_public
+    @recipe = Recipe.find_by_id(params[:recipe_id])
+    @recipe.public = !@recipe.public
+
+    redirect_to recipe_path(@recipe.id), notice: 'Recipe updated' if @recipe.save
+  end
+
   def destroy
     @recipe = current_user.recipes.find(params[:id])
     @recipe.destroy
