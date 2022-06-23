@@ -4,8 +4,14 @@
 <p><%= @recipe.description %></p>
 <%= link_to "Add Food", new_recipe_recipe_food_path(@recipe) %>
 
-<div>
 
+<% if @recipe.public %>
+  <%= button_to "Private", toggle_public_path(@recipe.id), method: :patch  %>
+<% else %>
+  <%= button_to "Public", toggle_public_path(@recipe.id), method: :patch  %>
+<% end %>
+
+<div>
   <table>
     <thead>
       <tr>
