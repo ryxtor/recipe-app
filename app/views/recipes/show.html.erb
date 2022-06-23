@@ -3,8 +3,6 @@
 <p>Cooking Time: <%= @recipe.cooking_time %></p>
 <p><%= @recipe.description %></p>
 
-
-
 <%= link_to "Add Ingredient", new_recipe_recipe_food_path(@recipe) %>
 
 <button id="myBtn">Generate Shopping List</button>
@@ -54,9 +52,6 @@
   </table>
 </div>
 
-
-
-
 <div id="myModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
@@ -68,7 +63,6 @@
       <%= f.submit "Generate" %>
     <% end %>
   </div>
-
 </div>
 
 <%= javascript_include_tag 'modal.js' %>
