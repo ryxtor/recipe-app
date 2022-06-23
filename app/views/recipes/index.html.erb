@@ -7,25 +7,14 @@
 </head>
 <body>
     <section class="users_list">
-    <h1>Recipes List</h1>
-
+      <h1>Recipes List</h1>
     <div>
     <%= link_to 'Create a Recipe', new_recipe_path %> 
     </div>
-
-    <% flash.each do |type, msg| %>
+      <% flash.each do |type, msg| %>
         <%= content_tag :div, msg, class: "#{type} alert" %>
-        <% end %>
-        <% @recipes.each do |recipe| %>
-          <div>
-            <%= link_to recipe.name, recipe %> <br><br>
-            <%= recipe.description %> <br><br>
-            <% if can? :manage, recipe %>
-            <%= button_to 'Remove', recipe_path(recipe), method: :delete %> <br><br>
-            <% end %>
-          </div>
-     <% end %>
-
-     </section>
+      <% end %>
+      <%= render partial: 'recipe', collection: @recipes %>
+    </section>
 </body>
 </html>

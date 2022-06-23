@@ -1,55 +1,68 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Recipes</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>  
-</head>
-<body>
+<h2><%= @recipe.name %></h2>
+<p>Preparation Time: <%= @recipe.preparation_time %></p>
+<p>Cooking Time: <%= @recipe.cooking_time %></p>
+<p><%= @recipe.description %></p>
 
-<section class="container">
+<%= link_to "Add Ingredient", new_recipe_recipe_food_path(@recipe) %>
 
- <div class="recipe_detail">
-    <h1>Recipe 1</h1>
+<button id="myBtn">Generate Shopping List</button>
+<% if @recipe.public %>
+  <%= button_to "Private", toggle_public_path(@recipe.id), method: :patch  %>
+<% else %>
+  <%= button_to "Public", toggle_public_path(@recipe.id), method: :patch  %>
+<% end %>
 
-    <p>The cooking time goes here</p>
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th >Food</th>
+        <th>Quantity</th>
+        <th>Value</th>
+        <% if can? :manage, @recipe %>
+        <th>Actions</th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
 
-    <p>Step to cook it goes here</p>
+    <% @recipe.recipe_foods.includes([:food]).each do |food| %>
+      <tr>
+        <td><%= food.food.name %></td>
+        <td><%= "#{food.quantity}" %></td>
+        <td><%= "#{food.food.price}" %></td>
+        <% if can? :manage, @recipe %>
+        <td>
+          <%= link_to "Modify", edit_recipe_recipe_food_path(@recipe, food) %>
+          <%= button_to "Delete", recipe_recipe_food_path(@recipe, food), method: :delete %>
+        </td>
+        <% end %>
+      </tr>
+      <% end %>
 
-    <button type="button">Genarate shopping list!</button>
+      <%= content_tag :div, class: "modal fade", id: dom_id(@recipe, :modal) do %>
+        <div class="modal-dialog" >
+          <div class="modal-content">
+            Lorem ipsum...
+          </div>
+        </div>
+      <% end %>
 
-    <button type="button">Add Ingridients!</button>
+    </tbody>
+  </table>
+</div>
 
-    <table style="width:100%">
-  <tr>
-    <th>Food</th>
-    <th>Quantity</th>
-    <th>Value</th>
-    <th>Action</th>
-  </tr>
-  <tr>
-    <td>Apple</td>
-    <td>20g</td>
-     <td>10$</td>
-     <td><a>Remove</a>||<a>Add</a></td>
-   </tr>
-  <tr>
-    <td>Pineapple</td>
-    <td>10g</td>
-    <td>100$</td>
-    <td><a>Remove</a>||<a>Add</a></td>
-  </tr>
-   <tr>
-  	<td>Chicken breast</td>
-    <td>2g</td>
-    <td>4$</td>
-    <td><a>Remove</a>||<a>Add</a></td>
-  </tr>
-</table>
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Generate Shopping List<h3>
+    <p>Choose an inventory to use</p>
+    <%= form_with url: "/shopping_list", scope: :inventory_food, method: :get do |f| %>
+      <%= f.collection_select(:id, current_user.inventories, :id, :name ) %>
+      <%= f.hidden_field :recipe_id, value: @recipe.id %>
+      <%= f.submit "Generate" %>
+    <% end %>
+  </div>
+</div>
 
-
-   
- </div>
- </section>
-</body>
-</html>
+<%= javascript_include_tag 'modal.js' %>
