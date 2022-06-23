@@ -8,11 +8,9 @@
 <body>
     <section class="users_list">
       <h1>Recipes List</h1>
-
-      <div>
-        <%= link_to 'Create a Recipe', new_recipe_path %> 
-      </div
-
+    <div>
+    <%= link_to 'Create a Recipe', new_recipe_path %> 
+    </div>
       <% flash.each do |type, msg| %>
         <%= content_tag :div, msg, class: "#{type} alert" %>
       <% end %>
