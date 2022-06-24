@@ -1,6 +1,19 @@
-<p><%= link_to recipe.name, recipe_path(id: recipe.id) %></p>
-<p><%= recipe.description %></p>
-<% if can? :manage, recipe %>
-  <%= button_to 'Remove', recipe_path(recipe), method: :delete %>
-<% end %>
-  <br><br>
+<div onclick="window.location='/recipes/<%=recipe.id%>'" class="container bg-light shadow">
+<div class="row border mb-4 border-dark rounded">
+<div class="col p-2">
+  <p><%= recipe.name %></p>
+  <p>By: <%= recipe.user.name %></p>
+</div>
+<div class="col p-2">
+  <p>Preparation time: <%= recipe.preparation_time %></p>
+  <% total = [] %>
+  <p>Total price: <% recipe.recipe_foods.includes([:food]).each do |food| total.push(food.food.price * food.quantity) end%> <%= total.sum() %></p>
+</div>
+<div class="col p-2">
+  <p><%= recipe.description %></p>
+  <% if can? :manage, recipe %>
+    <%= button_to 'Remove', recipe_path(recipe), method: :delete, class: "btn btn-danger" %>
+  <% end %>
+</div>
+</div>
+</div>

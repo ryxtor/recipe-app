@@ -1,8 +1,11 @@
 <% flash.each do |type, msg| %>
-<%= content_tag :div, msg, class: "#{type} alert" %>
+<%= content_tag :div, msg, class: "alert #{type}" %>
 <% end %>
+<div class="container border border-dark shadow bg-light p-5 rounded">
+<h1 class="text-center mb-3" >Create a new inventory</h1>
 <%= form_with url: "/inventories", scope: :inventory do |f| %>
-      <%= f.text_field :name, placeholder: 'Name' %>
-      <%= f.text_field :description, placeholder: 'Description' %>
-      <%= f.submit "Submit" %>
+      <%= f.text_field :name, placeholder: 'Name', class: "form-control m-3 shadow-sm" %>
+      <%= f.text_field :description, placeholder: 'Description', class: "form-control m-3 shadow-sm" %>
+      <%= f.submit "Submit", class: "btn btn-primary shadow m-3" %>
     <% end %>
+</div>
