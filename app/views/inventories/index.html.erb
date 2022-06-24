@@ -1,6 +1,10 @@
 <% flash.each do |type, msg| %>
 <%= content_tag :div, msg, class: "#{type} alert" %>
 <% end %>
+
+<%= link_to 'Create new Inventory', new_inventory_path %>
+<br> <br>
+
 <% @inventories.each do |inventory| %>
   <div>
     <%= link_to inventory.name, inventory %>
@@ -9,4 +13,5 @@
     <%= button_to 'Remove', inventory_path(inventory), method: :delete %>
     <% end %>
   </div>
+  <br> <br>
 <% end %>
