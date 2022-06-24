@@ -1,24 +1,67 @@
-# README
+![](https://img.shields.io/badge/Microverse-blueviolet)
+ #  Recipe app📝
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an app to store your recipes and make them public! After login, you can create new recipes with the food you added to your favorite foods. You can also store the ingredients you currently have in an inventory and compare the recipe you want to follow with your inventory to get a custom shopping list with the items you need!
+ 
+ ## Built With
 
-Things you may want to cover:
+ - Ruby
+ - Ruby on Rails
+ - Bootstrap
+ - HTML
+ - CSS
+ - JavaScript
 
-* Ruby version
+ ## Getting Started
 
-* System dependencies
+ To get a local copy up and running follow these simple example steps.
+- git clone  `https://github.com/ryxtor/recipe-app.git`
 
-* Configuration
+- open with your preffered code editor.
 
-* Database creation
+ ## Running the project
 
-* Database initialization
+To run the project,
+- Navigate to the root directory of the project `cd recipe-app`
 
-* How to run the test suite
+- run `rails s`
 
-* Services (job queues, cache servers, search engines, etc.)
+## Runnig tests
+- run `rspec`
 
-* Deployment instructions
+## Authors:
 
-* ...
+### 👤 Joaquin G.L. Zanetti
+- GitHub: [@Kakalanp](https://github.com/Kakalanp)
+- Twitter: [@LeccaJoaquin](https://twitter.com/LeccaJoaquin)
+- LinkedIn: [Joaquín Garrido Lecca Zanetti](https://www.linkedin.com/in/joaquin-garrido-lecca-zanetti/)
+
+### 👤 Lucas Bonnefon
+
+- GitHub: [@ryxtor](https://github.com/ryxtor)
+- Twitter: [@Ryxtor](https://twitter.com/ryxtor)
+- LinkedIn: [Lucas Bonnefon](https://www.linkedin.com/in/lucasbonnefon/)
+
+### 👤 **Richard Opiyo**
+
+- GitHub: [@richardoppiyo](https://github.com/richardoppiyo)
+- Twitter: [@blessed_ricky](https://twitter.com/blessed_ricky)
+- LinkedIn: [Richard Opiyo](https://linkedin.com/in/richardoppiyo) 
+
+ ## 🤝 Contributing
+
+ Contributions, issues, and feature requests are welcome!
+
+ Feel free to check the [issues page](https://github.com/usorfaitheloho/school-library/issues).
+
+ ## Show your support
+
+ Give a ⭐️ if you like this project!
+
+ ## Acknowledgments
+
+ - Microverse: [microverse community](https://github.com/microverseinc)
+
+ ## 📝 License
+
+ This project is MIT licensed.
