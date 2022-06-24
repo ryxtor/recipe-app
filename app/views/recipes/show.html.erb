@@ -57,7 +57,7 @@
     <span class="close">&times;</span>
     <h3>Generate Shopping List<h3>
     <p>Choose an inventory to use</p>
-    <%= form_with url: "/shopping_list", scope: :inventory_food, method: :get do |f| %>
+    <%= form_with url: "/shopping_list", method: :get do |f| %>
       <%= f.collection_select(:id, current_user.inventories, :id, :name ) %>
       <%= f.hidden_field :recipe_id, value: @recipe.id %>
       <%= f.submit "Generate" %>
