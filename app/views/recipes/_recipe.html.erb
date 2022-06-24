@@ -1,6 +1,11 @@
 <div onclick="window.location='/recipes/<%=recipe.id%>'">
   <p><%= recipe.name %></p>
   <p><%= recipe.description %></p>
+
+  <p>Preparation time: <%= recipe.preparation_time %></p>
+  <% total = [] %>
+  <p>Total price: <% recipe.recipe_foods.includes([:food]).each do |food| total.push(food.food.price * food.quantity) end%> <%= total.sum() %></p>
+
   <% if can? :manage, recipe %>
     <%= button_to 'Remove', recipe_path(recipe), method: :delete %>
   <% end %>
