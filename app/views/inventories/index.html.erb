@@ -1,17 +1,22 @@
 <% flash.each do |type, msg| %>
 <%= content_tag :div, msg, class: "#{type} alert" %>
 <% end %>
+<div class="container rounded border border-dark d-flex flex-column bg-light shadow p-5">
+<h2 class="text-center mb-3"> Inventories </h2>
 
-<%= link_to 'Create new Inventory', new_inventory_path %>
-<br> <br>
+<%= button_to 'Create new Inventory', new_inventory_path, class: "text-white dec-none btn btn-primary m-3 shadow", method: :get %>
 
 <% @inventories.each do |inventory| %>
+  <div class="d-flex justify-content-around bg-light p-1 rounded m-3 shadow border border-dark">
   <div>
-    <%= link_to inventory.name, inventory %>
-    <%= inventory.description %>
+  <p>
+    <%= link_to inventory.name, inventory, class: "mb-4 dec-none text-dark text-capitalize h5 mt-2" %>
+  </p>
     <% if can? :manage, inventory %>
-    <%= button_to 'Remove', inventory_path(inventory), method: :delete %>
+    <%= button_to 'Remove', inventory_path(inventory), method: :delete, class: "mt-4 btn btn-danger" %>
     <% end %>
+    </div>
+    <p class="align-self-center m-0" ><%= inventory.description %></p>
   </div>
-  <br> <br>
 <% end %>
+</div>

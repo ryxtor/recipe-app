@@ -1,26 +1,36 @@
+<div class="container d-flex flex-column border border-dark bg-light shadow rounded align-items-center p-5">
 <h2><%= @recipe.name %></h2>
+<div class="container">
+<div class="d-flex justify-content-around">
+<div class="">
 <p>Preparation Time: <%= @recipe.preparation_time %></p>
 <p>Cooking Time: <%= @recipe.cooking_time %></p>
 <p><%= @recipe.description %></p>
-
-<%= link_to "Add Ingredient", new_recipe_recipe_food_path(@recipe) %>
-
-<button id="myBtn">Generate Shopping List</button>
+</div>
+<div class="">
 <% if @recipe.public %>
-  <%= button_to "Private", toggle_public_path(@recipe.id), method: :patch  %>
+  <%= button_to "Private", toggle_public_path(@recipe.id), method: :patch, class: "btn btn-danger shadow"  %>
 <% else %>
-  <%= button_to "Public", toggle_public_path(@recipe.id), method: :patch  %>
+  <%= button_to "Public", toggle_public_path(@recipe.id), method: :patch, class: "btn btn-success shadow"  %>
 <% end %>
+</div>
+</div>
+
+<div class="d-flex justify-content-around">
+<button class="btn btn-primary shadow" id="myBtn">Generate Shopping List</button>
+
+<%= button_to "Add Ingredient", new_recipe_recipe_food_path(@recipe), method: :get, class: "btn btn-primary shadow" %>
+</div>
 
 <div>
-  <table>
+  <table class="table">
     <thead>
       <tr>
-        <th >Food</th>
-        <th>Quantity</th>
-        <th>Value per unit</th>
+        <th class="col" >Food</th>
+        <th class="col" >Quantity</th>
+        <th class="col" >Value per unit</th>
         <% if can? :manage, @recipe %>
-        <th>Actions</th>
+        <th class="col" >Actions</th>
         <% end %>
       </tr>
     </thead>
@@ -33,14 +43,16 @@
         <td><%= "#{food.food.price}" %></td>
         <% if can? :manage, @recipe %>
         <td>
-          <%= link_to "Modify", edit_recipe_recipe_food_path(@recipe, food) %>
-          <%= button_to "Delete", recipe_recipe_food_path(@recipe, food), method: :delete %>
+          <%= button_to "Modify", edit_recipe_recipe_food_path(@recipe, food), method: :get, class: "btn btn-warning shadow-sm mb-3" %>
+          <%= button_to "Remove", recipe_recipe_food_path(@recipe, food), method: :delete, class: "btn btn-danger shadow-sm" %>
         </td>
         <% end %>
       </tr>
       <% end %>
     </tbody>
   </table>
+</div>
+</div>
 </div>
 
 <div id="myModal" class="modal">

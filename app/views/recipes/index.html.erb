@@ -6,10 +6,12 @@
   <%= csrf_meta_tags %>  
 </head>
 <body>
-    <section class="users_list">
-      <h1>Recipes List</h1>
+    <section class="container border border-dark rounded bg-light shadow p-5">
+      <h1 class="text-center">My Recipes</h1>
     <div>
-    <%= link_to 'Create a Recipe', new_recipe_path %> 
+    <button type="button" class="btn btn-primary text-white mb-3 shadow">
+    <%= link_to 'Create a Recipe', new_recipe_path, class: "text-white dec-none" %> 
+    </button>
     </div>
       <% flash.each do |type, msg| %>
         <%= content_tag :div, msg, class: "#{type} alert" %>
