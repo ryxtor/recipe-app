@@ -1,0 +1,8 @@
+<div class="container shadow row m-4 border border-dark rounded p-3">
+<p class="col m-0"><%= food.name%></p>
+<p class="col m-0"><%= food.measurement_unit%></p>
+<p class="col m-0"><%= food.price%></p>
+<div class="col m-0">
+<%= button_to "Remove", food_path(food), :method=>:delete, class: "btn btn-danger" %>
+</div>
+</div>

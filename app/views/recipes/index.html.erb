@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recipes</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>  
+</head>
+<body>
+    <section class="container border border-dark rounded bg-light shadow p-5">
+      <h1 class="text-center">My Recipes</h1>
+    <div>
+    <button type="button" class="btn btn-primary text-white mb-3 shadow">
+    <%= link_to 'Create a Recipe', new_recipe_path, class: "text-white dec-none" %> 
+    </button>
+    </div>
+      <% flash.each do |type, msg| %>
+        <%= content_tag :div, msg, class: "#{type} alert" %>
+      <% end %>
+      <%= render partial: 'recipe', collection: @recipes %>
+    </section>
+</body>
+</html>

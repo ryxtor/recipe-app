@@ -1,0 +1,14 @@
+<div class="container border border-dark rounded bg-light shadow p-5">
+<h1 class="text-center">Food</h1>
+<%= form_with model: Food.new, url: foods_path do |form|%>
+    <p class="text-center">Add a new one!</p>
+    <div class="row justify-content-around">
+    <%= form.text_field :name, placeholder: "Name", class: "col form-control shadow-sm"%>
+    <%= form.text_field :measurement_unit, placeholder: "Measurement unit", class: "col form-control shadow-sm"%>
+    <%= form.text_field :price, placeholder: "Price", class: "col form-control shadow-sm"%>
+    <%= form.submit "Create new food", class: "col btn btn-primary shadow-sm"%>
+    </div>
+<% end %>
+
+<%= render partial: 'food', collection: @foods%>
+</div>
