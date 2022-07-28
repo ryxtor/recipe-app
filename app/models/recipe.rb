@@ -11,4 +11,8 @@ class Recipe < ApplicationRecord
   def food_ids
     recipe_foods.map(&:food_id)
   end
+
+  def short_text
+    description.truncate(100)
+  end
 end
