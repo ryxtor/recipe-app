@@ -1,27 +1,27 @@
-<div>
-  <h3><%= @inventory.name %></h3>
-</div>
+<div class="container rounded border border-dark d-flex flex-column bg-light shadow p-5">
+  <h3 class="text-center mb-3"><%= @inventory.name %></h3>
 
-<%= link_to 'Add food', new_inventory_inventory_food_path(@inventory) %>
+<%= button_to 'Add food', new_inventory_inventory_food_path(@inventory), class: "text-white dec-none btn btn-primary m-3 shadow", method: :get  %>
 
-<table>
+<table class="table">
 	<thead>
 	<tr>
-		<th>Food</th>
-		<th>Quantity</th>
-		<th>Actions</th>
+		<th scope="col">Food</th>
+		<th scope="col">Quantity</th>
+		<th scope="col">Actions</th>
 	</tr>
 	</thead>
 	<tbody>
   <% @inventory.inventory_foods.includes([:food]).each do |food| %>
-	<tr>
+	<tr scope="row">
 		<td><%= food.food.name %></td>
 		<td><%= "#{food.quantity} #{food.food.measurement_unit}" %></td>
-		<td>
-      <%= link_to 'Edit', edit_inventory_inventory_food_path(@inventory, food) %>
-      <%= button_to 'Remove', inventory_inventory_food_path(@inventory, food), method: :delete %>
+		<td class="d-flex">
+      <%= link_to 'Edit', edit_inventory_inventory_food_path(@inventory, food), class: "dec-none btn btn-warning m-1 shadow-sm" %>
+      <%= button_to 'Remove', inventory_inventory_food_path(@inventory, food), class: "text-white dec-none btn btn-danger m-1 shadow-sm", method: :delete %>
     </td>
 	</tr>
   <% end %>
 	</tbody>
 </table>
+</div>
