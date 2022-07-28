@@ -1,7 +1,7 @@
-<div onclick="window.location='/recipes/<%=recipe.id%>'" class="container bg-light shadow">
+<div class="container bg-light shadow">
 <div class="row border mb-4 border-dark rounded">
 <div class="col p-2">
-  <p><%= recipe.name %></p>
+  <p class=""><%= link_to recipe.name, recipe, class: "mb-4 dec-none text-dark text-capitalize h5 mt-2" %></p>
   <p>By: <%= recipe.user.name %></p>
 </div>
 <div class="col p-2">
