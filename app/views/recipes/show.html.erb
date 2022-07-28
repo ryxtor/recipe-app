@@ -8,18 +8,21 @@
 <p><%= @recipe.description %></p>
 </div>
 <div class="">
+<% if can? :manage, @recipe %>
 <% if @recipe.public %>
   <%= button_to "Private", toggle_public_path(@recipe.id), method: :patch, class: "btn btn-danger shadow"  %>
 <% else %>
   <%= button_to "Public", toggle_public_path(@recipe.id), method: :patch, class: "btn btn-success shadow"  %>
+<% end %>
 <% end %>
 </div>
 </div>
 
 <div class="d-flex justify-content-around mb-3">
 <button class="btn btn-primary shadow" id="myBtn">Generate Shopping List</button>
-
+<% if can? :manage, @recipe %>
 <%= button_to "Add Ingredient", new_recipe_recipe_food_path(@recipe), method: :get, class: "btn btn-primary shadow" %>
+<% end %>
 </div>
 
 <div>

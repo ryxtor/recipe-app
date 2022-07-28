@@ -16,7 +16,7 @@ class FoodsController < ApplicationController
     if @food.save
       redirect_to foods_path, notice: 'Food type was successfully added'
     else
-      render :new, alert: 'Food could not be added'
+      redirect_to foods_path, alert: 'Food could not be added'
     end
   end
 
