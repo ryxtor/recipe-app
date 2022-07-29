@@ -15,21 +15,18 @@ class ShoppingListController < ApplicationController
     r_foods = RecipeFood.where(recipe_id: @recipe.id).includes([:food])
 
     r_foods.each do |r_food|
-      i_foods.each do |i_food|
-        if r_food.food.id == i_food.food.id
-          if r_food.quantity > i_food.quantity
-            quantity = r_food.quantity - i_food.quantity
-            newfood = r_food
-            newfood.quantity = quantity
-            @foods.push(newfood)
-            @prices += (quantity * i_food.food.price)
-          elsif r_food.quantity <= i_food.quantity
-            break
-          else
-            @foods.push(r_food)
-            @prices += (r_food.quantity * i_food.food.price)
-          end
+      i_food = i_foods.find_by(food_id: r_food.food.id)
+      if i_food
+        if r_food.quantity > i_food.quantity
+          quantity = r_food.quantity - i_food.quantity
+          newfood = r_food
+          newfood.quantity = quantity
+          @foods.push(newfood)
+          @prices += (quantity * i_food.food.price)
         end
+      else
+        @foods.push(r_food)
+        @prices += (r_food.quantity * r_food.food.price)
       end
     end
   end
